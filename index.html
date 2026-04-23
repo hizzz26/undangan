@@ -1,0 +1,305 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Tian & Penny</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Poppins';
+background:linear-gradient(to bottom,#fffaf5,#f3e7d3);
+text-align:center;
+overflow-x:hidden;
+}
+
+/* COVER */
+.cover{
+position:fixed;
+width:100%;
+height:100vh;
+background:linear-gradient(135deg,#f8e8c8,#e8d5b7);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:999;
+transition:1s;
+}
+.cover.hide{opacity:0;pointer-events:none}
+
+.btn{
+padding:12px 30px;
+border:none;
+border-radius:40px;
+background:linear-gradient(45deg,#d4a574,#b88a5a);
+color:white;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* FLOAT LOVE */
+.love{
+position:fixed;
+color:#d4a574;
+animation:float 6s linear infinite;
+font-size:20px;
+}
+@keyframes float{
+0%{transform:translateY(100vh) scale(0.5);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-10vh) scale(1.2);opacity:0}
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+background:url('bg.jpeg') center/cover;
+position:relative;
+}
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+top:0;left:0;
+}
+.hero *{position:relative}
+
+/* FOTO PREMIUM */
+.frame{
+width:180px;height:180px;
+border-radius:50%;
+overflow:hidden;
+border:6px solid rgba(255,255,255,0.8);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+animation:fadeUp 1s ease;
+}
+.frame img{width:100%;height:100%;object-fit:cover}
+
+.hero h1{
+font-family:'Playfair Display';
+font-size:48px;
+margin:10px;
+animation:fadeUp 1.2s;
+}
+
+.hero p{animation:fadeUp 1.4s}
+
+/* SECTION */
+.section{
+padding:70px 20px;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+.section.show{opacity:1;transform:translateY(0)}
+
+.title{
+font-family:'Playfair Display';
+color:#c19a6b;
+font-size:32px;
+margin-bottom:20px;
+}
+
+/* GLASS CARD */
+.card{
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:25px;
+margin:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* COUNTDOWN */
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+.box{
+background:white;
+padding:20px;
+border-radius:15px;
+width:90px;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+.number{font-size:28px;color:#d4a574;font-weight:bold}
+
+/* MUSIC */
+.music{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:white;
+padding:10px 20px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING LOVE -->
+<script>
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="love";
+heart.style.left=Math.random()*100+"%";
+heart.innerHTML="❤";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+</script>
+
+<!-- COVER -->
+<div class="cover" id="cover">
+<h2>Kepada Yth.</h2>
+<p id="guest">Bapak/Ibu/Saudara/i</p>
+<button class="btn" id="open">Buka Undangan</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+<div class="frame">
+<img src="foto.jpeg">
+</div>
+<h1>Tian & Penny</h1>
+<p>2 Mei 2026 • 08:30 WIB</p>
+</div>
+
+<!-- ORTU -->
+<div class="section">
+<div class="title">Keluarga Pengantin</div>
+<div class="card">
+<p><b>Septian Tri Wiyanto</b><br>Putra dari Bapak Daryono & Ibu Waginem</p><br>
+<p><b>Bernike Penny</b><br>Putri dari Bapak Mukijo (Alm) & Ibu Mukiyem (Alm)</p>
+</div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="section">
+<div class="title">Menuju Hari Bahagia</div>
+<div class="countdown">
+<div class="box"><div id="d" class="number">0</div><div>Hari</div></div>
+<div class="box"><div id="h" class="number">0</div><div>Jam</div></div>
+<div class="box"><div id="m" class="number">0</div><div>Menit</div></div>
+<div class="box"><div id="s" class="number">0</div><div>Detik</div></div>
+</div>
+</div>
+
+<!-- DETAIL -->
+<div class="section">
+<div class="title">Detail Acara</div>
+<div class="card">
+<p>📅 2 Mei 2026</p>
+<p>⏰ 08.30 WIB</p>
+<p>📍 LAWANG DJOENDJING CAFE AND RRESTO</p>
+</div>
+</div>
+
+<!-- MAP -->
+<div class="section">
+<div class="title">Lokasi</div>
+<div class="card">
+<img id="qr" width="150"><br><br>
+<a id="map"><button class="btn">Lihat Maps</button></a>
+</div>
+</div>
+
+<!-- UCAPAN -->
+<div class="section">
+<div class="card">
+<p>Kami mohon doa restu atas pernikahan kami</p>
+</div>
+</div>
+
+<!-- MUSIC -->
+<div class="music">
+<button id="musicBtn">Pause</button>
+</div>
+
+<audio id="audio" loop>
+<source src="lagu.mp3">
+</audio>
+
+<script>
+// OPEN
+document.getElementById("open").onclick=()=>{
+document.getElementById("cover").classList.add("hide");
+document.getElementById("audio").play();
+}
+
+// MUSIC
+let play=true;
+document.getElementById("musicBtn").onclick=()=>{
+const a=document.getElementById("audio");
+if(play){a.pause();musicBtn.innerText="Play";}
+else{a.play();musicBtn.innerText="Pause";}
+play=!play;
+}
+
+// SCROLL ANIMATION
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
+sec.classList.add("show");
+}
+});
+});
+
+// NAMA TAMU
+const nama=new URLSearchParams(location.search).get("to");
+if(nama){document.getElementById("guest").innerText="Bapak/Ibu/Saudara/i "+nama}
+
+// MAP
+const link="https://www.google.com/maps/place/Lawang+Djoendjing+Cafe+and+Resto/@-7.5432481,110.8317615,17z/data=!4m6!3m5!1s0x2e7a16c0a050f063:0xfa0cc715a5b73fbf!8m2!3d-7.5432481!4d110.8317615!16s%2Fg%2F11clfkw_r9?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D";
+document.getElementById("qr").src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+encodeURIComponent(link);
+document.getElementById("map").href=link;
+
+// COUNTDOWN
+const target=new Date(2026,4,2,8,30).getTime();
+setInterval(()=>{
+let now=new Date().getTime();
+let diff=target-now;
+
+let d=Math.floor(diff/(1000*60*60*24));
+let h=Math.floor((diff/(1000*60*60))%24);
+let m=Math.floor((diff/(1000*60))%60);
+let s=Math.floor((diff/1000)%60);
+
+document.getElementById("d").innerText=d;
+document.getElementById("h").innerText=h;
+document.getElementById("m").innerText=m;
+document.getElementById("s").innerText=s;
+
+if(diff<0){
+document.querySelector(".countdown").innerHTML="<h2>Hari Bahagia 🎉</h2>";
+}
+},1000);
+</script>
+
+</body>
+</html>
+```
